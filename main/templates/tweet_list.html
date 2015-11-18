@@ -1,0 +1,30 @@
+<h2>Twitter API LIST: </h2>
+
+
+    {% for tweets in tweet %}
+
+        <h2>Screen Name: {{ tweets.screen_name }}</h2>
+        <h2>Image URL: {{tweets.profile_image_url}}</h2>
+        <h2>Source: {{tweets.source}} </h2>
+        <h2>Created at: {{tweets.created_at}}</h2>
+        <h2>Location: {{tweets.location}}</h2>
+        <h2>Time Zone: {{tweets.time_zone}}</h2>
+
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+from django.db import models
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length= 30)
+
+Database Table
+
+CREATE TABLE myapp_person(
+    "id" serial NOT NULL PRIMARY KEY,
+    "first_name" varchar(30) NOT NULL,
+    "last_name"  varchar(30) NOT NULL
+
+);
+
+When running new apps to INSTALLED_APPS be sure to run
+./manage.py migrate
+
+from django.db import models
+
+class Musician(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    instrument = models.CharField(max_length=100)
+
+class Album(models.Model):
+    artist = models.ForeignKey(Musician)
+    name = models.CharField(max_length=100)
+    release_date = models.DateFiled()
+    num_starts = models.IntegerField()
+
+Arguments available to Field types ( Field options)
+
+null
+avoid using null on stringbased fields such as CharField and TextField. Empty string values
+will always be stored as empty strings. Django covention is to use the
+empty screen not null. Database related
+
+blank
+both string and non-string based fields, you will also need to set blank=True if you wish
+to permit empty values. Validation related
+
+Choices
+an iterable consiting tself of iterables of exactly two items
+meant for static data that doesn't change much, if ever.
+
+db_column
+name of the database column 
+to use for this field
+
+default
+used when new model instances are created and a value isn't provided for the field
+
+You don't need to specify that the primary_key=True
+If you do it will overrfide the default primary-key
+behavior
